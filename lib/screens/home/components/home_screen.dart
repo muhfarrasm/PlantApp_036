@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:plantapp/constants.dart';
+import 'package:plantapp/components/my_bottom_nav_bar.dart';
 import 'package:plantapp/screens/home/components/body.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,29 +9,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: BodyPage(), // Tambahkan body kosong jika diperlukan
+      body: BodyPage(),
+      bottomNavigationBar: MyBottomNavBar(), // Tambahkan body kosong jika diperlukan
     );
   }
 }
-  AppBar buildAppBar() {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: kPrimaryColor,
-      centerTitle: true, 
-      leadingWidth: 48, 
-      leading: IconButton(
-        onPressed: (){},
-        icon: SvgPicture.asset(
-          "assets/icons/icons8-menu.svg",
-          color: Colors.white, 
-        ),
-      ),
-      title: Text(
-        "Home",
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
+

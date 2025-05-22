@@ -26,7 +26,8 @@ class BodyPage extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: KDefaultPadding),
                 height: 54,
                 decoration: BoxDecoration(
-                  color: Colors.white
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(28)
                 ),
 
 

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:plantapp/camera/home_camera.dart';
+
 import 'package:plantapp/constants.dart';
 
 class HeaderWithSearchBox extends StatelessWidget {
-  const HeaderWithSearchBox({
-    super.key,
-    required this.size,
-  });
+  const HeaderWithSearchBox({super.key, required this.size});
 
   final Size size;
 
@@ -32,9 +31,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                   padding: EdgeInsets.only(left: kDefaultPadding),
                   child: Text(
                     'Hi Farras',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.headlineMedium?.copyWith(
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -95,8 +92,24 @@ class HeaderWithSearchBox extends StatelessWidget {
                     ),
                   ),
                   Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const FullPage()),
+                        );
+                      },
+                      child: SvgPicture.asset(
+                        "assets/icons/camera.svg", // ikon kamera
+                        height: 24,
+                        width: 24,
+                      ),
+                    ),
+                  ),
+                  Padding(
                     // Tambahkan Padding untuk ikon
-                    padding: EdgeInsets.only(right: 15),
+                    padding: EdgeInsets.only(right: 25),
                     child: SvgPicture.asset(
                       "assets/icons/search.svg",
                       color: kPrimaryColor, // Sesuaikan warna

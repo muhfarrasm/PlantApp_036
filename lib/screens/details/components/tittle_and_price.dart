@@ -45,7 +45,7 @@ class TittleAndPrice extends StatelessWidget {
           ),
     
           Spacer(),
-          Text("\$$price", style: Theme.of(context).textTheme.headlineMedium.copyWith(color: kPrimaryColor),)
+          Text("\$$price", style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kPrimaryColor),)
         ],
       ),
     );

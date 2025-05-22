@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:plantapp/constants.dart';
 
 
@@ -18,24 +19,26 @@ class IconCard extends StatelessWidget {
       height: 62,
       width: 62,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(63),
-          topRight: Radius.circular(63),
+        color: kBackgroundColor,
+        borderRadius: BorderRadius.circular(
+          6
         ),
               
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, 10),
-            blurRadius: 60,
-            color: kPrimaryColor.withOpacity(0.29),
+            offset: Offset(0, 15),
+            blurRadius: 22,
+            color: kPrimaryColor.withOpacity(0.22),
+          ),
+          BoxShadow(
+            offset: Offset(-15, -15),
+            blurRadius: 20,
+            color: Colors.white,
           ),
         ],
-        image: DecorationImage(
-          alignment: Alignment.centerLeft,
-          fit: BoxFit.cover,
-          image: AssetImage("lib/screens/details/components/body.dart assets/images/body.png"),
-        ),
+        
       ),
+      child: SvgPicture.asset(icon),
     );
   }
 }

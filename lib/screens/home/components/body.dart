@@ -25,16 +25,38 @@ class BodyPage extends StatelessWidget {
                 ),
                 child: Row(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(left: kDefaultPadding),
+                    Padding(
+                      padding: EdgeInsets.only(left: kDefaultPadding),
                       child: Text(
-                      'Hi Farras',
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                        'Hi Farras',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineMedium?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    
+                    Spacer(),
+                    Container(
+                      width: 60, // Ukuran diameter lingkaran
+                      height: 60,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle, // Bentuk circular
+                        border: Border.all(
+                          color: Colors.white, // Warna border
+                          width: 1.5, // Ketebalan border
+                        ),
+                      ),
+                      child: ClipOval(
+                        // Memastikan gambar terpotong menjadi lingkaran
+                        child: Image.asset(
+                          "assets/images/logo.jpg",
+                          fit: BoxFit.cover, // Gambar akan menutupi area
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: kDefaultPadding),
                   ],
                 ),
               ),
@@ -69,7 +91,8 @@ class BodyPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                       Padding( // Tambahkan Padding untuk ikon
+                      Padding(
+                        // Tambahkan Padding untuk ikon
                         padding: EdgeInsets.only(right: 15),
                         child: SvgPicture.asset(
                           "assets/icons/search.svg",

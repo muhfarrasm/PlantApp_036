@@ -23,6 +23,24 @@ class BodyPage extends StatelessWidget {
           ),
           Container(
             width: size.width * 0.4,
+            child: Column(
+              children: <Widget>[
+                Image.asset("assets/images/tanaman1.jpeg"),
+                Container(
+                  padding: EdgeInsets.all(kDefaultPadding / 2),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(0, 10),
+                        blurRadius: 50,
+                        color: kPrimaryColor.withOpacity(0.23),
+                      ),
+                    ],
+                    ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

@@ -4,7 +4,7 @@ import 'package:plantapp/constants.dart';
 import 'package:plantapp/screens/home/components/header_with_searchbox.dart';
 
 class BodyPage extends StatelessWidget {
-  const BodyPage({super.key,});
+  const BodyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,36 +13,53 @@ class BodyPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           HeaderWithSearchBox(size: size),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: Row(
-              children: [
-                TitleWithCustomUnderline(
-                  text: "Recomended",
-                ),
-                Spacer(),
-              TextButton( // Solusi terbaik
-                style: TextButton.styleFrom(
-                  backgroundColor: kPrimaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  minimumSize: Size(70, 36),
-                ),
-                onPressed: () {},
-                child: Text(
-                  'More',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                ),
-              ],
+          TitleWithMoreBtn(
+            title: "Rekomendasi Tanaman",
+            press: () {
+              // Bisa tambahkan aksi navigasi atau log
+              print("Lihat lebih banyak tanaman");
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TitleWithMoreBtn extends StatelessWidget {
+  const TitleWithMoreBtn({super.key, required this.title, required this.press});
+
+  final String title;
+  final VoidCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+      child: Row(
+        children: [
+          TitleWithCustomUnderline(text: title),
+          Spacer(),
+          TextButton(
+            // Solusi terbaik
+            style: TextButton.styleFrom(
+              backgroundColor: kPrimaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+              minimumSize: Size(70, 36),
             ),
-          )
+            onPressed: press,
+            child: Text(
+              'More',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -50,10 +67,7 @@ class BodyPage extends StatelessWidget {
 }
 
 class TitleWithCustomUnderline extends StatelessWidget {
-  const TitleWithCustomUnderline({
-    super.key,
-    required this.text,
-  });
+  const TitleWithCustomUnderline({super.key, required this.text});
 
   final String text;
 
@@ -62,7 +76,7 @@ class TitleWithCustomUnderline extends StatelessWidget {
     return Container(
       height: 24,
       child: Stack(
-        children: <Widget> [
+        children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(left: kDefaultPadding / 4),
             child: Text(
@@ -74,18 +88,17 @@ class TitleWithCustomUnderline extends StatelessWidget {
             bottom: 0,
             left: 0,
             right: 0,
-            child: Container
-            (
-             margin: EdgeInsets.only(left: kDefaultPadding / 4, right: kDefaultPadding),
-             height: 3,
-             color: kPrimaryColor,
-             
+            child: Container(
+              margin: EdgeInsets.only(
+                left: kDefaultPadding / 4,
+                right: kDefaultPadding,
+              ),
+              height: 3,
+              color: kPrimaryColor,
             ),
-    
-            )
+          ),
         ],
       ),
     );
   }
 }
-

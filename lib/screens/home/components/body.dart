@@ -21,11 +21,59 @@ class BodyPage extends StatelessWidget {
               print("Lihat lebih banyak tanaman");
             },
           ),
+          RecomendsPlants(),
+        ],
+      ),
+    );
+  }
+}
+
+class RecomendsPlants extends StatelessWidget {
+  const RecomendsPlants({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
           RecomendPlantCard(
             image: "assets/images/tanaman1.jpeg",
             title: "Bulu atu",
             country: "Indonesia",
             price: 440,
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(),
+                ),
+              );
+            },
+          ),
+      
+          RecomendPlantCard(
+            image: "assets/images/tanaman2.jpg",
+            title: "Bulu bata",
+            country: "Indonesia",
+            price: 540,
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(),
+                ),
+              );
+            },
+          ),
+      
+          RecomendPlantCard(
+            image: "assets/images/tanaman4.jpg",
+            title: "Bulu ratu",
+            country: "Indonesia",
+            price: 540,
             press: () {
               Navigator.push(
                 context,

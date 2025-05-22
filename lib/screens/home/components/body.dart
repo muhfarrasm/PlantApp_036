@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plantapp/constants.dart';
+import 'package:plantapp/screens/home/components/header_with_searchbox.dart';
 
 class BodyPage extends StatelessWidget {
-  const BodyPage({super.key});
+  const BodyPage({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -12,118 +13,79 @@ class BodyPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           HeaderWithSearchBox(size: size),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: Row(
+              children: [
+                TitleWithCustomUnderline(
+                  text: "Recomended",
+                ),
+                Spacer(),
+              TextButton( // Solusi terbaik
+                style: TextButton.styleFrom(
+                  backgroundColor: kPrimaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  minimumSize: Size(70, 36),
+                ),
+                onPressed: () {},
+                child: Text(
+                  'More',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
   }
 }
 
-class HeaderWithSearchBox extends StatelessWidget {
-  const HeaderWithSearchBox({
+class TitleWithCustomUnderline extends StatelessWidget {
+  const TitleWithCustomUnderline({
     super.key,
-    required this.size,
+    required this.text,
   });
 
-  final Size size;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: size.height * 0.2,
+      height: 24,
       child: Stack(
-        children: <Widget>[
-          Container(
-            height: size.height * 0.2 - 27,
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(36),
-                bottomRight: Radius.circular(36),
-              ),
-            ),
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(left: kDefaultPadding),
-                  child: Text(
-                    'Hi Farras',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.headlineMedium?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Spacer(),
-                Container(
-                  width: 60, // Ukuran diameter lingkaran
-                  height: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle, // Bentuk circular
-                    border: Border.all(
-                      color: Colors.white, // Warna border
-                      width: 1.5, // Ketebalan border
-                    ),
-                  ),
-                  child: ClipOval(
-                    // Memastikan gambar terpotong menjadi lingkaran
-                    child: Image.asset(
-                      "assets/images/logo.jpg",
-                      fit: BoxFit.cover, // Gambar akan menutupi area
-                    ),
-                  ),
-                ),
-                SizedBox(width: kDefaultPadding),
-              ],
+        children: <Widget> [
+          Padding(
+            padding: const EdgeInsets.only(left: kDefaultPadding / 4),
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           Positioned(
             bottom: 0,
             left: 0,
             right: 0,
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-              height: 54,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: kPrimaryColor,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Search",
-                        hintStyle: TextStyle(color: kPrimaryColor),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 20),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    // Tambahkan Padding untuk ikon
-                    padding: EdgeInsets.only(right: 15),
-                    child: SvgPicture.asset(
-                      "assets/icons/search.svg",
-                      color: kPrimaryColor, // Sesuaikan warna
-                      height: 20, // Atur ukuran
-                    ),
-                  ),
-                ],
-              ),
+            child: Container
+            (
+             margin: EdgeInsets.only(left: kDefaultPadding / 4, right: kDefaultPadding),
+             height: 3,
+             color: kPrimaryColor,
+             
             ),
-          ),
+    
+            )
         ],
       ),
     );
   }
 }
+
